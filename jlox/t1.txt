@@ -1,0 +1,83 @@
+var a = "global a";
+var b = "global b";
+var c = "global c";
+{
+  var a = "outer a";
+  var b = "outer b";
+  {
+    var a = "inner a";
+    print a;
+    print b;
+    print c;
+  }
+  print a;
+  print b;
+  print c;
+}
+print a;
+print b;
+print c;
+
+var aa = 0;
+var bb = 1;
+
+while (aa < 10000) {
+  print aa;
+  var temp = aa;
+  aa = bb;
+  bb = temp + bb;
+}
+
+for (var a = 0; a < 100; a = a + 3) {
+    print a;
+}
+
+fun sayHi(first, last) {
+    print "Hi, " + first + " and " + last + "!";
+}
+
+sayHi("MingXuan", "MingYue");
+println(12 + 33);
+
+fun add(first, second) {
+    return first + second;
+}
+
+fun fibonacci(n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 2) + fibonacci(n - 1);
+}
+
+//for (var i = 0; i < 20; i = i + 1) {
+//  print fibonacci(i);
+//}
+
+println(add(22, 1100));
+
+fun makeCounter() {
+    var i = 0;
+    fun count() {
+        i = i + 1;
+        print i;
+    }
+
+    return count;
+}
+
+var count = makeCounter();
+count();
+count();
+
+fun makePoint(x, y) {
+    fun closure(method) {
+        if (method == "x") return x;
+        if (method == "y") return y;
+        print "unknown method " + method;
+    }
+
+    return closure;
+}
+
+var point = makePoint(22, 33);
+print point("x");
+print point("y");
