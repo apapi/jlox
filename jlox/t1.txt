@@ -21,14 +21,16 @@ print c;
 var aa = 0;
 var bb = 1;
 
-while (aa < 10000) {
+while (aa < 20) {
   print aa;
   var temp = aa;
   aa = bb;
   bb = temp + bb;
 }
 
-for (var a = 0; a < 100; a = a + 3) {
+println("1111111111");
+
+for (var a = 0; a < 10; a = a + 3) {
     print a;
 }
 
@@ -43,16 +45,20 @@ fun add(first, second) {
     return first + second;
 }
 
+println(add(111000, 222));
+
 fun fibonacci(n) {
   if (n <= 1) return n;
   return fibonacci(n - 2) + fibonacci(n - 1);
 }
 
-//for (var i = 0; i < 20; i = i + 1) {
-//  print fibonacci(i);
-//}
+println("1111aaaaaa");
 
-println(add(22, 1100));
+for (var i = 0; i < 20; i = i + 1) {
+  print fibonacci(i);
+}
+
+println("22222222222");
 
 fun makeCounter() {
     var i = 0;
@@ -81,3 +87,16 @@ fun makePoint(x, y) {
 var point = makePoint(22, 33);
 print point("x");
 print point("y");
+
+var ta = "global";
+{
+    fun showA() {
+        println(ta);
+    }
+
+    showA();
+
+    var ta = "local";
+    showA();
+
+}

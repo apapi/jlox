@@ -86,13 +86,13 @@ public class Parser {
 
     private Stmt forStatement() {
         consume(LEFT_PARENT, "Expect '(' after for.");
-        Stmt initalizer;
+        Stmt initializer;
         if (match(SEMICOLON)) {
-            initalizer = null;
+            initializer = null;
         } else if (match(VAR)) {
-            initalizer = varDeclaration();
+            initializer = varDeclaration();
         } else {
-            initalizer = expressionStatement();
+            initializer = expressionStatement();
         }
 
         Expr condition = null;
@@ -116,8 +116,8 @@ public class Parser {
         if (condition == null) condition = new Expr.Literal(true);
         body = new Stmt.While(condition, body);
 
-        if (initalizer != null) {
-            body = new Stmt.Block(Arrays.asList(initalizer, body));
+        if (initializer != null) {
+            body = new Stmt.Block(Arrays.asList(initializer, body));
         }
 
         return body;
