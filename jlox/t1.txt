@@ -100,3 +100,55 @@ var ta = "global";
     showA();
 
 }
+
+class Abcd {
+    m1() {
+       print "method of class Abcd";
+    }
+}
+
+print Abcd;
+var abcd = Abcd();
+print abcd;
+
+Abcd().m1();
+
+class Bacon {
+  eat() {
+    print "Crunch crunch crunch!";
+  }
+}
+
+Bacon().eat();
+
+class Cake {
+    taste() {
+        var adj = "delicious";
+        println("The " + this.flavor + " cake is " + adj + "!");
+    }
+}
+
+var cake = Cake();
+cake.flavor = "German chocolate";
+cake.taste();
+
+class Student {
+    init(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    printInfo() {
+        println("Student " + this.name + " is " + this.age + " years old.");
+    }
+}
+
+var st1 = Student("MingXuan", "4");
+st1.printInfo();
+
+st1.name = "MingYue";
+st1.printInfo();
+
+
+st1.age = "5";
+st1.printInfo();

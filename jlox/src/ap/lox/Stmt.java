@@ -5,6 +5,7 @@ import java.util.List;
 abstract class Stmt {
   interface Visitor<R> {
     R visitBlockStmt(Block stmt);
+    R visitClassStmt(Class stmt);
     R visitExpressionStmt(Expression stmt);
     R visitFunctionStmt(Function stmt);
     R visitIFStmt(IF stmt);
@@ -20,10 +21,24 @@ abstract class Stmt {
     }
 
     <R> R accept(Visitor<R> visitor) {
-      return visitor.visitBlockStmt(this); 
+      return visitor.visitBlockStmt(this);
     }
 
     final List<Stmt> statements;
+  }
+
+  static class Class extends Stmt {
+      Class(Token name, List<Stmt.Function> methods) {
+      this.name = name;
+      this.methods = methods;
+    }
+
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitClassStmt(this);
+    }
+
+    final Token name;
+    final List<Stmt.Function> methods;
   }
 
   static class Expression extends Stmt {
@@ -32,7 +47,7 @@ abstract class Stmt {
     }
 
     <R> R accept(Visitor<R> visitor) {
-      return visitor.visitExpressionStmt(this); 
+      return visitor.visitExpressionStmt(this);
     }
 
     final Expr expression;
@@ -46,7 +61,7 @@ abstract class Stmt {
     }
 
     <R> R accept(Visitor<R> visitor) {
-      return visitor.visitFunctionStmt(this); 
+      return visitor.visitFunctionStmt(this);
     }
 
     final Token name;
@@ -62,7 +77,7 @@ abstract class Stmt {
     }
 
     <R> R accept(Visitor<R> visitor) {
-      return visitor.visitIFStmt(this); 
+      return visitor.visitIFStmt(this);
     }
 
     final Expr condition;
@@ -76,7 +91,7 @@ abstract class Stmt {
     }
 
     <R> R accept(Visitor<R> visitor) {
-      return visitor.visitPrintStmt(this); 
+      return visitor.visitPrintStmt(this);
     }
 
     final Expr expression;
@@ -89,7 +104,7 @@ abstract class Stmt {
     }
 
     <R> R accept(Visitor<R> visitor) {
-      return visitor.visitReturnStmt(this); 
+      return visitor.visitReturnStmt(this);
     }
 
     final Token keyword;
@@ -103,7 +118,7 @@ abstract class Stmt {
     }
 
     <R> R accept(Visitor<R> visitor) {
-      return visitor.visitVarStmt(this); 
+      return visitor.visitVarStmt(this);
     }
 
     final Token name;
@@ -117,7 +132,7 @@ abstract class Stmt {
     }
 
     <R> R accept(Visitor<R> visitor) {
-      return visitor.visitWhileStmt(this); 
+      return visitor.visitWhileStmt(this);
     }
 
     final Expr condition;
