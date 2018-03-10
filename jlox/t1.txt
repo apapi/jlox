@@ -141,6 +141,12 @@ class Student {
     printInfo() {
         println("Student " + this.name + " is " + this.age + " years old.");
     }
+
+    test(abc) {
+       println("inside test");
+       eat(abc);
+       println("end of test");
+    }
 }
 
 var st1 = Student("MingXuan", "4");
@@ -152,3 +158,56 @@ st1.printInfo();
 
 st1.age = "5";
 st1.printInfo();
+
+fun eat(food) {
+    println("eating " + food);
+}
+
+eat("baozi");
+
+st1.eat = eat;
+st1.eat("noddles");
+st1.test("22");
+
+class Baby {
+    name(str) {
+        println("This is baby, name is " + str);
+    }
+}
+
+var bb = Baby();
+bb.name("xxx");
+
+class MyBaby < Baby {
+    name(str) {
+        super.name(str);
+        println("This is my baby.");
+    }
+}
+
+var mb = MyBaby();
+mb.name("aaa");
+
+class CA {
+    method() {
+        println("Method in CA");
+    }
+}
+
+class CB < CA {
+    method() {
+        println("Method in CB");
+    }
+
+    test() {
+        super.method();
+    }
+}
+
+class CC < CB {}
+
+CC().test();
+
+
+
+
