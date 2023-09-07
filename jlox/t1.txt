@@ -195,6 +195,11 @@ class CA {
 }
 
 class CB < CA {
+
+    init() {
+        this.name = "CB";
+    }
+
     method() {
         println("Method in CB");
     }
@@ -204,10 +209,27 @@ class CB < CA {
     }
 }
 
-class CC < CB {}
+class CC < CB {
+    test2() {
+        //println(super.name);
+    }
+}
 
-CC().test();
 
+var cc = CC();
+cc.test();
+cc.test2();
+
+
+fun fib(n) {
+  if (n < 2) return n;
+  return fib(n - 1) + fib(n - 2);
+}
+
+var before = clock();
+print fib(40);
+var after = clock();
+print after - before;
 
 
 
